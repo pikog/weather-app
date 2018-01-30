@@ -1,0 +1,22 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Weather App\r ====",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pikog/weather-app.git"
+  },
+  "author": "Pierre Grardel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pikog/weather-app/issues"
+  },
+  "homepage": "https://github.com/pikog/weather-app#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}
