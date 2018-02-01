@@ -2,13 +2,14 @@
 const request = require('request')
 
 //Function to Request Google Maps API in order to get latitude and longitude in function to an address
-module.exports = (address, callback) =>
+module.exports = (address, key, callback) =>
 {
     request(
         {
             url: 'https://maps.googleapis.com/maps/api/geocode/json',
             qs: {
-                address
+                address,
+                key,
             },
             json: true
         }, (error, response, body) =>
@@ -23,6 +24,11 @@ module.exports = (address, callback) =>
             {
                 callback('Invalid Address')
             }
+            //No result error handling
+            else if(body.status === 'OVER_QUERY_LIMIT')
+            {
+                callback('Daily request quota exceeded')
+            }
             //Good response
             else if(body.status === 'OK')
             {
@@ -35,7 +41,7 @@ module.exports = (address, callback) =>
             //Unknow error handling
             else
             {
-                callback('Error with Google response')
+                callback(body)
             }
         }
     )

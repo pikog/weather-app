@@ -8,7 +8,7 @@ const weather = require('./weather/weather')
 //Configuration for yargs
 const argv = yargsConfig()
 
-geocode(argv.address, (geocodeError, geocodeResults) =>
+geocode(argv.address, process.env.GOOGLE_MAPS_SECRET, (geocodeError, geocodeResults) =>
 {
     if(geocodeError)
     {
@@ -16,6 +16,7 @@ geocode(argv.address, (geocodeError, geocodeResults) =>
     }
     else
     {
+        console.log(geocodeResults.address)
         weather(geocodeResults.lat, geocodeResults.lng, (weatherError, weatherResults) =>
         {
             if(weatherError)
