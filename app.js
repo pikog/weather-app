@@ -1,18 +1,31 @@
+require('dotenv').config()
+
 //Import our files
 const yargsConfig = require('./yargs-config')
 const geocode = require('./geocode/geocode')
+const weather = require('./weather/weather')
 
 //Configuration for yargs
 const argv = yargsConfig()
 
-geocode(argv.address, (error, results) =>
+geocode(argv.address, (geocodeError, geocodeResults) =>
 {
-    if(error)
+    if(geocodeError)
     {
-        console.log(error)
+        console.log(geocodeError)
     }
     else
     {
-        console.log(JSON.stringify(results, undefined, 2))
+        weather(geocodeResults.lat, geocodeResults.lng, (weatherError, weatherResults) =>
+        {
+            if(weatherError)
+            {
+                console.log(weatherError)
+            }
+            else
+            {
+                console.log(JSON.stringify(weatherResults, undefined, 2))
+            }
+        })
     }
 })
