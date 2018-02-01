@@ -17,7 +17,7 @@ geocode(argv.address, process.env.GOOGLE_MAPS_SECRET, (geocodeError, geocodeResu
     else
     {
         console.log(geocodeResults.address)
-        weather(geocodeResults.lat, geocodeResults.lng, (weatherError, weatherResults) =>
+        weather(geocodeResults.lat, geocodeResults.lng, process.env.DARKSKY_SECRET, (weatherError, weatherResults) =>
         {
             if(weatherError)
             {

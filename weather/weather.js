@@ -2,14 +2,11 @@
 const request = require('request')
 
 //Function to request Dark Sky API in order to get weather in function to latitude and longitude
-module.exports = (lat, lng, callback) =>
+module.exports = (lat, lng, key, callback) =>
 {
-    const darkSkySecretEncoded = encodeURIComponent(process.env.DARKSKY_SECRET)
-    const latEncoded = encodeURIComponent(lat)
-    const lngEncoded = encodeURIComponent(lng)
     request(
         {
-            url: `https://api.darksky.net/forecast/${darkSkySecretEncoded}/${latEncoded},${lngEncoded}`,
+            url: `https://api.darksky.net/forecast/${key}/${lat},${lng}`,
             json: true
         }, (error, response, body) =>
         {
