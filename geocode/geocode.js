@@ -16,7 +16,7 @@ module.exports = (address, callback) =>
             //Connection error handling
             if(error)
             {
-                callback('Unable to connect')
+                callback('Unable to connect Google Maps API')
             }
             //No result error handling
             else if(body.status === 'ZERO_RESULT')
