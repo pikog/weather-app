@@ -26,7 +26,7 @@ geocode(argv.address, process.env.GOOGLE_MAPS_SECRET, (geocodeError, geocodeResu
             }
             else
             {
-                console.log(JSON.stringify(weatherResults, undefined, 2))
+                console.log(`Weather summary: ${weatherResults.summary}`)
             }
         })
     }
